@@ -1,11 +1,11 @@
 module.exports = {
-  entry: './public/app.js',
+  entry: './public/app.jsx',
   output: {
     path: __dirname,
     filename: './public/bundle.js'
   },
   resolve: {
-    extentions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx']
   },
   module: {
     loaders: [
@@ -14,7 +14,7 @@ module.exports = {
         query: {
           presets: ['react', 'es2015']
         },
-        tests: /\.jsx?$/,
+        test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/
       }
     ]
