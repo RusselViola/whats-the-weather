@@ -25502,6 +25502,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRouter = __webpack_require__(159);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25523,9 +25525,23 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'h2',
+	        'div',
 	        null,
-	        'Nav component'
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Nav component'
+	        ),
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/' },
+	          'Get Weather'
+	        ),
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/about' },
+	          'About'
+	        )
 	      );
 	    }
 	  }]);
