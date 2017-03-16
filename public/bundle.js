@@ -25538,18 +25538,18 @@
 	          'Nav component'
 	        ),
 	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: '/' },
+	          _reactRouter.IndexLink,
+	          { to: '/', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
 	          'Get Weather'
 	        ),
 	        _react2.default.createElement(
 	          _reactRouter.Link,
-	          { to: '/about' },
+	          { to: '/about', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
 	          'About'
 	        ),
 	        _react2.default.createElement(
 	          _reactRouter.Link,
-	          { to: '/examples' },
+	          { to: '/examples', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
 	          'Examples'
 	        )
 	      );
