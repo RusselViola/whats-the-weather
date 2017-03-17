@@ -25603,6 +25603,11 @@
 	  }
 
 	  _createClass(Weather, [{
+	    key: 'handleSearch',
+	    value: function handleSearch(location) {
+	      alert(location);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -25613,7 +25618,7 @@
 	          null,
 	          'What\'s the Weather?'
 	        ),
-	        _react2.default.createElement(_WeatherForm2.default, null),
+	        _react2.default.createElement(_WeatherForm2.default, { onSearch: this.handleSearch }),
 	        _react2.default.createElement(_WeatherMessage2.default, null)
 	      );
 	    }
@@ -25628,7 +25633,7 @@
 /* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -25658,19 +25663,31 @@
 	  }
 
 	  _createClass(WeatherForm, [{
-	    key: "render",
+	    key: 'onFormSubmit',
+	    value: function onFormSubmit(e) {
+	      e.preventDefault();
+	      debugger;
+	      var location = this.refs.location.value;
+
+	      if (location.length > 0) {
+	        this.refs.location.value = '';
+	        this.props.onSearch(location);
+	      }
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "div",
+	        'div',
 	        null,
 	        _react2.default.createElement(
-	          "form",
-	          null,
-	          _react2.default.createElement("input", { type: "text" }),
+	          'form',
+	          { onSubmit: this.onFormSubmit.bind(this) },
+	          _react2.default.createElement('input', { type: 'text', ref: 'location' }),
 	          _react2.default.createElement(
-	            "button",
+	            'button',
 	            null,
-	            "Get Weather"
+	            'Get Weather'
 	          )
 	        )
 	      );
