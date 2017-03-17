@@ -64,11 +64,11 @@
 
 	var _Weather2 = _interopRequireDefault(_Weather);
 
-	var _About = __webpack_require__(225);
+	var _About = __webpack_require__(226);
 
 	var _About2 = _interopRequireDefault(_About);
 
-	var _Examples = __webpack_require__(226);
+	var _Examples = __webpack_require__(227);
 
 	var _Examples2 = _interopRequireDefault(_Examples);
 
@@ -25577,6 +25577,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _WeatherForm = __webpack_require__(225);
+
+	var _WeatherForm2 = _interopRequireDefault(_WeatherForm);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25598,9 +25602,14 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'h3',
+	        'div',
 	        null,
-	        'What\'s the Weather?'
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'What\'s the Weather?'
+	        ),
+	        _react2.default.createElement(_WeatherForm2.default, null)
 	      );
 	    }
 	  }]);
@@ -25612,6 +25621,64 @@
 
 /***/ },
 /* 225 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var WeatherForm = function (_Component) {
+	  _inherits(WeatherForm, _Component);
+
+	  function WeatherForm() {
+	    _classCallCheck(this, WeatherForm);
+
+	    return _possibleConstructorReturn(this, (WeatherForm.__proto__ || Object.getPrototypeOf(WeatherForm)).apply(this, arguments));
+	  }
+
+	  _createClass(WeatherForm, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        _react2.default.createElement(
+	          "form",
+	          null,
+	          _react2.default.createElement("input", { type: "text" }),
+	          _react2.default.createElement(
+	            "button",
+	            null,
+	            "Get Weather"
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return WeatherForm;
+	}(_react.Component);
+
+	exports.default = WeatherForm;
+
+/***/ },
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25660,7 +25727,7 @@
 	exports.default = About;
 
 /***/ },
-/* 226 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
