@@ -25596,20 +25596,35 @@
 	var Weather = function (_Component) {
 	  _inherits(Weather, _Component);
 
-	  function Weather() {
+	  function Weather(props) {
 	    _classCallCheck(this, Weather);
 
-	    return _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).call(this, props));
+
+	    _this.state = {
+	      location: 'Miami',
+	      temp: 88
+	    };
+	    _this.handleSearch = _this.handleSearch.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(Weather, [{
 	    key: 'handleSearch',
 	    value: function handleSearch(location) {
-	      alert(location);
+	      this.setState({
+	        location: location,
+	        temp: 23
+	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _state = this.state,
+	          temp = _state.temp,
+	          location = _state.location;
+
+
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -25619,7 +25634,10 @@
 	          'What\'s the Weather?'
 	        ),
 	        _react2.default.createElement(_WeatherForm2.default, { onSearch: this.handleSearch }),
-	        _react2.default.createElement(_WeatherMessage2.default, null)
+	        _react2.default.createElement(_WeatherMessage2.default, {
+	          temp: temp,
+	          location: location
+	        })
 	      );
 	    }
 	  }]);
@@ -25666,7 +25684,6 @@
 	    key: 'onFormSubmit',
 	    value: function onFormSubmit(e) {
 	      e.preventDefault();
-	      debugger;
 	      var location = this.refs.location.value;
 
 	      if (location.length > 0) {
@@ -25735,10 +25752,19 @@
 	  _createClass(WeatherMessage, [{
 	    key: 'render',
 	    value: function render() {
+	      var _props = this.props,
+	          temp = _props.temp,
+	          location = _props.location;
+
+
 	      return _react2.default.createElement(
 	        'h3',
 	        null,
-	        'It is Weathers out there for sure very Weather.'
+	        'It is ',
+	        temp,
+	        ' in ',
+	        location,
+	        '.'
 	      );
 	    }
 	  }]);
