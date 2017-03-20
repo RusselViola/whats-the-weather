@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 export default class WeatherForm extends Component {
   onFormSubmit(e) {
     e.preventDefault();
-    debugger;
     let location = this.refs.location.value;
 
     if (location.length > 0) {
