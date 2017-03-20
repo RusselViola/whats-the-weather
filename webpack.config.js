@@ -1,9 +1,16 @@
+const Dotenv = require('dotenv-webpack');
+
 module.exports = {
   entry: './src/app.jsx',
   output: {
     path: __dirname,
     filename: './public/bundle.js'
   },
+  plugins: [
+    new Dotenv({
+      path: '.env'
+    })
+  ],
   resolve: {
     root: __dirname,
     alias: {
@@ -13,7 +20,8 @@ module.exports = {
       About: 'src/components/About.jsx',
       Examples: 'src/components/Examples.jsx',
       WeatherForm: 'src/components/WeatherForm.jsx',
-      WeatherMessage: 'src/components/WeatherMessage.jsx'
+      WeatherMessage: 'src/components/WeatherMessage.jsx',
+      openWeatherMap: 'src/api/openWeatherMap.jsx'
     },
     extensions: ['', '.js', '.jsx']
   },
