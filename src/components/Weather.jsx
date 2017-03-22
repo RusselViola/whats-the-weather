@@ -12,9 +12,10 @@ export default class Weather extends Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
   handleSearch(location) {
-    this.setState({isLoading: true});
     let _this = this;
 
+    this.setState({isLoading: true});
+    
     openWeatherMap.getTemp(location).then(function (temp) {
       _this.setState({
         location: location,
