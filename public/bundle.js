@@ -25623,9 +25623,13 @@
 	      _openWeatherMap2.default.getTemp(location).then(function (temp) {
 	        _this.setState({
 	          location: location,
-	          temp: temp
+	          temp: temp,
+	          isLoading: false
 	        });
 	      }, function (errorMessage) {
+	        _this.setState({
+	          isLoading: false
+	        });
 	        alert(errorMessage);
 	      });
 	    }
