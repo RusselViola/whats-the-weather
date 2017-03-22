@@ -64,11 +64,11 @@
 
 	var _Weather2 = _interopRequireDefault(_Weather);
 
-	var _About = __webpack_require__(253);
+	var _About = __webpack_require__(225);
 
 	var _About2 = _interopRequireDefault(_About);
 
-	var _Examples = __webpack_require__(254);
+	var _Examples = __webpack_require__(226);
 
 	var _Examples2 = _interopRequireDefault(_Examples);
 
@@ -25579,15 +25579,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _WeatherForm = __webpack_require__(225);
+	var _WeatherForm = __webpack_require__(227);
 
 	var _WeatherForm2 = _interopRequireDefault(_WeatherForm);
 
-	var _WeatherMessage = __webpack_require__(226);
+	var _WeatherMessage = __webpack_require__(228);
 
 	var _WeatherMessage2 = _interopRequireDefault(_WeatherMessage);
 
-	var _openWeatherMap = __webpack_require__(227);
+	var _openWeatherMap = __webpack_require__(229);
 
 	var _openWeatherMap2 = _interopRequireDefault(_openWeatherMap);
 
@@ -25608,8 +25608,7 @@
 	    var _this2 = _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).call(this, props));
 
 	    _this2.state = {
-	      location: 'Miami',
-	      temp: 88
+	      isLoading: false
 	    };
 	    _this2.handleSearch = _this2.handleSearch.bind(_this2);
 	    return _this2;
@@ -25618,14 +25617,19 @@
 	  _createClass(Weather, [{
 	    key: 'handleSearch',
 	    value: function handleSearch(location) {
+	      this.setState({ isLoading: true });
 	      var _this = this;
 
 	      _openWeatherMap2.default.getTemp(location).then(function (temp) {
 	        _this.setState({
 	          location: location,
-	          temp: temp
+	          temp: temp,
+	          isLoading: false
 	        });
 	      }, function (errorMessage) {
+	        _this.setState({
+	          isLoading: false
+	        });
 	        alert(errorMessage);
 	      });
 	    }
@@ -25634,8 +25638,21 @@
 	    value: function render() {
 	      var _state = this.state,
 	          temp = _state.temp,
-	          location = _state.location;
+	          location = _state.location,
+	          isLoading = _state.isLoading;
 
+
+	      function renderMessage() {
+	        if (isLoading) {
+	          return _react2.default.createElement(
+	            'h3',
+	            null,
+	            'Fetching Weather...'
+	          );
+	        } else if (temp && location) {
+	          return _react2.default.createElement(_WeatherMessage2.default, { temp: temp, location: location });
+	        }
+	      }
 
 	      return _react2.default.createElement(
 	        'div',
@@ -25646,10 +25663,7 @@
 	          'What\'s the Weather?'
 	        ),
 	        _react2.default.createElement(_WeatherForm2.default, { onSearch: this.handleSearch }),
-	        _react2.default.createElement(_WeatherMessage2.default, {
-	          temp: temp,
-	          location: location
-	        })
+	        renderMessage()
 	      );
 	    }
 	  }]);
@@ -25661,6 +25675,104 @@
 
 /***/ },
 /* 225 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var About = function (_Component) {
+	  _inherits(About, _Component);
+
+	  function About() {
+	    _classCallCheck(this, About);
+
+	    return _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).apply(this, arguments));
+	  }
+
+	  _createClass(About, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'h3',
+	        null,
+	        'About Component'
+	      );
+	    }
+	  }]);
+
+	  return About;
+	}(_react.Component);
+
+	exports.default = About;
+
+/***/ },
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Examples = function (_Component) {
+	  _inherits(Examples, _Component);
+
+	  function Examples() {
+	    _classCallCheck(this, Examples);
+
+	    return _possibleConstructorReturn(this, (Examples.__proto__ || Object.getPrototypeOf(Examples)).apply(this, arguments));
+	  }
+
+	  _createClass(Examples, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'h3',
+	        null,
+	        'Examples Component'
+	      );
+	    }
+	  }]);
+
+	  return Examples;
+	}(_react.Component);
+
+	exports.default = Examples;
+
+/***/ },
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25729,7 +25841,7 @@
 	exports.default = WeatherForm;
 
 /***/ },
-/* 226 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25787,12 +25899,12 @@
 	exports.default = WeatherMessage;
 
 /***/ },
-/* 227 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _axios = __webpack_require__(228);
+	var _axios = __webpack_require__(230);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -25818,21 +25930,21 @@
 	};
 
 /***/ },
-/* 228 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(229);
+	module.exports = __webpack_require__(231);
 
 /***/ },
-/* 229 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
-	var bind = __webpack_require__(231);
-	var Axios = __webpack_require__(232);
-	var defaults = __webpack_require__(233);
+	var utils = __webpack_require__(232);
+	var bind = __webpack_require__(233);
+	var Axios = __webpack_require__(234);
+	var defaults = __webpack_require__(235);
 
 	/**
 	 * Create an instance of Axios
@@ -25865,15 +25977,15 @@
 	};
 
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(250);
-	axios.CancelToken = __webpack_require__(251);
-	axios.isCancel = __webpack_require__(247);
+	axios.Cancel = __webpack_require__(252);
+	axios.CancelToken = __webpack_require__(253);
+	axios.isCancel = __webpack_require__(249);
 
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(252);
+	axios.spread = __webpack_require__(254);
 
 	module.exports = axios;
 
@@ -25882,12 +25994,12 @@
 
 
 /***/ },
-/* 230 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(231);
+	var bind = __webpack_require__(233);
 
 	/*global toString:true*/
 
@@ -26187,7 +26299,7 @@
 
 
 /***/ },
-/* 231 */
+/* 233 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -26204,17 +26316,17 @@
 
 
 /***/ },
-/* 232 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(233);
-	var utils = __webpack_require__(230);
-	var InterceptorManager = __webpack_require__(244);
-	var dispatchRequest = __webpack_require__(245);
-	var isAbsoluteURL = __webpack_require__(248);
-	var combineURLs = __webpack_require__(249);
+	var defaults = __webpack_require__(235);
+	var utils = __webpack_require__(232);
+	var InterceptorManager = __webpack_require__(246);
+	var dispatchRequest = __webpack_require__(247);
+	var isAbsoluteURL = __webpack_require__(250);
+	var combineURLs = __webpack_require__(251);
 
 	/**
 	 * Create a new instance of Axios
@@ -26295,13 +26407,13 @@
 
 
 /***/ },
-/* 233 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(230);
-	var normalizeHeaderName = __webpack_require__(234);
+	var utils = __webpack_require__(232);
+	var normalizeHeaderName = __webpack_require__(236);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -26318,10 +26430,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(235);
+	    adapter = __webpack_require__(237);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(235);
+	    adapter = __webpack_require__(237);
 	  }
 	  return adapter;
 	}
@@ -26395,12 +26507,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 234 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
+	var utils = __webpack_require__(232);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -26413,18 +26525,18 @@
 
 
 /***/ },
-/* 235 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(230);
-	var settle = __webpack_require__(236);
-	var buildURL = __webpack_require__(239);
-	var parseHeaders = __webpack_require__(240);
-	var isURLSameOrigin = __webpack_require__(241);
-	var createError = __webpack_require__(237);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(242);
+	var utils = __webpack_require__(232);
+	var settle = __webpack_require__(238);
+	var buildURL = __webpack_require__(241);
+	var parseHeaders = __webpack_require__(242);
+	var isURLSameOrigin = __webpack_require__(243);
+	var createError = __webpack_require__(239);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(244);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -26520,7 +26632,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(243);
+	      var cookies = __webpack_require__(245);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -26597,12 +26709,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 236 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(237);
+	var createError = __webpack_require__(239);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -26628,12 +26740,12 @@
 
 
 /***/ },
-/* 237 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(238);
+	var enhanceError = __webpack_require__(240);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -26651,7 +26763,7 @@
 
 
 /***/ },
-/* 238 */
+/* 240 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -26676,12 +26788,12 @@
 
 
 /***/ },
-/* 239 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
+	var utils = __webpack_require__(232);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -26750,12 +26862,12 @@
 
 
 /***/ },
-/* 240 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
+	var utils = __webpack_require__(232);
 
 	/**
 	 * Parse headers into an object
@@ -26793,12 +26905,12 @@
 
 
 /***/ },
-/* 241 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
+	var utils = __webpack_require__(232);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -26867,7 +26979,7 @@
 
 
 /***/ },
-/* 242 */
+/* 244 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -26909,12 +27021,12 @@
 
 
 /***/ },
-/* 243 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
+	var utils = __webpack_require__(232);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -26968,12 +27080,12 @@
 
 
 /***/ },
-/* 244 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
+	var utils = __webpack_require__(232);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -27026,15 +27138,15 @@
 
 
 /***/ },
-/* 245 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
-	var transformData = __webpack_require__(246);
-	var isCancel = __webpack_require__(247);
-	var defaults = __webpack_require__(233);
+	var utils = __webpack_require__(232);
+	var transformData = __webpack_require__(248);
+	var isCancel = __webpack_require__(249);
+	var defaults = __webpack_require__(235);
 
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -27111,12 +27223,12 @@
 
 
 /***/ },
-/* 246 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
+	var utils = __webpack_require__(232);
 
 	/**
 	 * Transform the data for a request or a response
@@ -27137,7 +27249,7 @@
 
 
 /***/ },
-/* 247 */
+/* 249 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27148,7 +27260,7 @@
 
 
 /***/ },
-/* 248 */
+/* 250 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27168,7 +27280,7 @@
 
 
 /***/ },
-/* 249 */
+/* 251 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27186,7 +27298,7 @@
 
 
 /***/ },
-/* 250 */
+/* 252 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27211,12 +27323,12 @@
 
 
 /***/ },
-/* 251 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Cancel = __webpack_require__(250);
+	var Cancel = __webpack_require__(252);
 
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -27274,7 +27386,7 @@
 
 
 /***/ },
-/* 252 */
+/* 254 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27305,104 +27417,6 @@
 	  };
 	};
 
-
-/***/ },
-/* 253 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var About = function (_Component) {
-	  _inherits(About, _Component);
-
-	  function About() {
-	    _classCallCheck(this, About);
-
-	    return _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).apply(this, arguments));
-	  }
-
-	  _createClass(About, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'h3',
-	        null,
-	        'About Component'
-	      );
-	    }
-	  }]);
-
-	  return About;
-	}(_react.Component);
-
-	exports.default = About;
-
-/***/ },
-/* 254 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Examples = function (_Component) {
-	  _inherits(Examples, _Component);
-
-	  function Examples() {
-	    _classCallCheck(this, Examples);
-
-	    return _possibleConstructorReturn(this, (Examples.__proto__ || Object.getPrototypeOf(Examples)).apply(this, arguments));
-	  }
-
-	  _createClass(Examples, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'h3',
-	        null,
-	        'Examples Component'
-	      );
-	    }
-	  }]);
-
-	  return Examples;
-	}(_react.Component);
-
-	exports.default = Examples;
 
 /***/ }
 /******/ ]);
