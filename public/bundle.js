@@ -27260,9 +27260,28 @@
 	var About = function About(props) {
 
 	  return _react2.default.createElement(
-	    'h3',
+	    'div',
 	    null,
-	    'About'
+	    _react2.default.createElement(
+	      'h3',
+	      null,
+	      'About'
+	    ),
+	    _react2.default.createElement(
+	      'p',
+	      null,
+	      'This Application was created using React.js and NodeJS'
+	    ),
+	    _react2.default.createElement(
+	      'p',
+	      null,
+	      'Powered by OpenWeatherMap API'
+	    ),
+	    _react2.default.createElement(
+	      'p',
+	      null,
+	      'Created by: Russel Viola'
+	    )
 	  );
 	};
 
