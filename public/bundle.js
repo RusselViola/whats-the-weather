@@ -25714,9 +25714,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var WeatherMessage = function WeatherMessage(props) {
-	  var temp = props.temp,
-	      location = props.location;
+	var WeatherMessage = function WeatherMessage(_ref) {
+	  var temp = _ref.temp,
+	      location = _ref.location;
 
 
 	  return _react2.default.createElement(
