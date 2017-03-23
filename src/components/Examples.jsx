@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-export default class Examples extends Component {
+const Examples = props => {
 
-  render() {
     return (
       <h3>Examples Component</h3>
     )
-  }
 }
+
+export default Examples;
