@@ -25460,11 +25460,6 @@
 	    'div',
 	    null,
 	    _react2.default.createElement(_Nav2.default, null),
-	    _react2.default.createElement(
-	      'h2',
-	      null,
-	      'Main Component'
-	    ),
 	    props.children
 	  );
 	};
@@ -25493,11 +25488,6 @@
 	  return _react2.default.createElement(
 	    'div',
 	    null,
-	    _react2.default.createElement(
-	      'h2',
-	      null,
-	      'Nav component'
-	    ),
 	    _react2.default.createElement(
 	      _reactRouter.IndexLink,
 	      { to: '/', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
@@ -27272,7 +27262,7 @@
 	  return _react2.default.createElement(
 	    'h3',
 	    null,
-	    'About Component'
+	    'About'
 	  );
 	};
 
@@ -27299,7 +27289,7 @@
 	  return _react2.default.createElement(
 	    'h3',
 	    null,
-	    'Examples Component'
+	    'Examples'
 	  );
 	};
 
