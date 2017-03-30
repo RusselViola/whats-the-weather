@@ -27387,7 +27387,7 @@
 /* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -27402,27 +27402,38 @@
 	var About = function About(props) {
 
 	  return _react2.default.createElement(
-	    'div',
+	    "div",
 	    null,
 	    _react2.default.createElement(
-	      'h3',
-	      null,
-	      'About'
+	      "h1",
+	      { className: "text-center" },
+	      "About"
 	    ),
 	    _react2.default.createElement(
-	      'p',
+	      "p",
 	      null,
-	      'This Application was created using React.js and NodeJS'
+	      "This Weather Application was created using ",
+	      _react2.default.createElement(
+	        "a",
+	        { href: "https://facebook.github.io/react" },
+	        "React.js"
+	      ),
+	      " and NodeJS"
 	    ),
 	    _react2.default.createElement(
-	      'p',
+	      "p",
 	      null,
-	      'Powered by OpenWeatherMap API'
+	      "Powered by ",
+	      _react2.default.createElement(
+	        "a",
+	        { href: "http://openweathermap.org" },
+	        "OpenWeatherMap API"
+	      )
 	    ),
 	    _react2.default.createElement(
-	      'p',
+	      "p",
 	      null,
-	      'Created by: Russel Viola'
+	      "Created by: Russel Viola"
 	    )
 	  );
 	};
