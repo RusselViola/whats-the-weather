@@ -4,9 +4,9 @@ const About = props => {
 
   return (
     <div>
-      <h3>About</h3>
-      <p>This Application was created using React.js and NodeJS</p>
-      <p>Powered by OpenWeatherMap API</p>
+      <h1 className="text-center">About</h1>
+      <p>This Weather Application was created using <a href="https://facebook.github.io/react">React.js</a> and NodeJS</p>
+      <p>Powered by <a href="http://openweathermap.org">OpenWeatherMap API</a></p>
       <p>Created by: Russel Viola</p>
     </div>
   )
