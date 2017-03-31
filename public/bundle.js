@@ -112,18 +112,18 @@
 
 	var _Weather2 = _interopRequireDefault(_Weather);
 
-	var _About = __webpack_require__(260);
+	var _About = __webpack_require__(261);
 
 	var _About2 = _interopRequireDefault(_About);
 
-	var _Examples = __webpack_require__(261);
+	var _Examples = __webpack_require__(262);
 
 	var _Examples2 = _interopRequireDefault(_Examples);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	//load foundation
-	__webpack_require__(262);
+	__webpack_require__(263);
 	$(document).foundation();
 
 	console.log(("ENV IS WORKING"));
@@ -25678,6 +25678,10 @@
 
 	var _openWeatherMap2 = _interopRequireDefault(_openWeatherMap);
 
+	var _ErrorModal = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"ErrorModal\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+	var _ErrorModal2 = _interopRequireDefault(_ErrorModal);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25706,7 +25710,10 @@
 	    value: function handleSearch(location) {
 	      var _this = this;
 
-	      this.setState({ isLoading: true });
+	      this.setState({
+	        isLoading: true,
+	        errorMessage: undefined
+	      });
 
 	      _openWeatherMap2.default.getTemp(location).then(function (temp) {
 	        _this.setState({
@@ -25714,20 +25721,21 @@
 	          temp: temp,
 	          isLoading: false
 	        });
-	      }, function (errorMessage) {
+	      }, function (e) {
 	        _this.setState({
-	          isLoading: false
+	          isLoading: false,
+	          errorMessage: e.message
 	        });
-	        alert(errorMessage);
 	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _state = this.state,
+	          isLoading = _state.isLoading,
 	          temp = _state.temp,
 	          location = _state.location,
-	          isLoading = _state.isLoading;
+	          errorMessage = _state.errorMessage;
 
 
 	      function renderMessage() {
@@ -25742,6 +25750,12 @@
 	        }
 	      }
 
+	      function renderError() {
+	        if (typeof errorMessage === 'string') {
+	          return _react2.default.createElement(_ErrorModal2.default, null);
+	        }
+	      }
+
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -25751,7 +25765,8 @@
 	          'What\'s the Weather?'
 	        ),
 	        _react2.default.createElement(_WeatherForm2.default, { onSearch: this.handleSearch }),
-	        renderMessage()
+	        renderMessage(),
+	        renderError()
 	      );
 	    }
 	  }]);
@@ -27384,7 +27399,8 @@
 
 
 /***/ },
-/* 260 */
+/* 260 */,
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27441,7 +27457,7 @@
 	exports.default = About;
 
 /***/ },
-/* 261 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27501,16 +27517,16 @@
 	exports.default = Examples;
 
 /***/ },
-/* 262 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(263);
+	var content = __webpack_require__(264);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(265)(content, {});
+	var update = __webpack_require__(266)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -27527,10 +27543,10 @@
 	}
 
 /***/ },
-/* 263 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(264)();
+	exports = module.exports = __webpack_require__(265)();
 	// imports
 
 
@@ -27541,7 +27557,7 @@
 
 
 /***/ },
-/* 264 */
+/* 265 */
 /***/ function(module, exports) {
 
 	/*
@@ -27597,7 +27613,7 @@
 
 
 /***/ },
-/* 265 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
