@@ -25678,7 +25678,7 @@
 
 	var _openWeatherMap2 = _interopRequireDefault(_openWeatherMap);
 
-	var _ErrorModal = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"ErrorModal\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _ErrorModal = __webpack_require__(260);
 
 	var _ErrorModal2 = _interopRequireDefault(_ErrorModal);
 
@@ -27399,7 +27399,80 @@
 
 
 /***/ },
-/* 260 */,
+/* 260 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function($) {'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(8);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ErrorModal = function (_Component) {
+	  _inherits(ErrorModal, _Component);
+
+	  function ErrorModal() {
+	    _classCallCheck(this, ErrorModal);
+
+	    return _possibleConstructorReturn(this, (ErrorModal.__proto__ || Object.getPrototypeOf(ErrorModal)).apply(this, arguments));
+	  }
+
+	  _createClass(ErrorModal, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var modal = new Foundation.Reveal($('#error-modal'));
+	      modal.open;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { id: 'error-modal', className: 'reveal tiny text-center', 'data-reveal': true },
+	        _react2.default.createElement(
+	          'h4',
+	          null,
+	          'Modal Message'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Error message'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'button hollow', 'data-close': true },
+	            'OK'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ErrorModal;
+	}(_react.Component);
+
+	exports.default = ErrorModal;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+
+/***/ },
 /* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
