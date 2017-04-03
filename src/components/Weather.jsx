@@ -8,7 +8,8 @@ export default class Weather extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false
+      isLoading: false,
+      errorMessage: undefined
     };
     this.handleSearch = this.handleSearch.bind(this);
   }
@@ -16,8 +17,7 @@ export default class Weather extends Component {
     let _this = this;
 
     this.setState({
-      isLoading: true,
-      errorMessage: undefined
+      isLoading: true
     });
 
     openWeatherMap.getTemp(location).then(function (temp) {

@@ -4,7 +4,7 @@ export default class ErrorModal extends Component {
 
   componentDidMount() {
     let modal = new Foundation.Reveal($('#error-modal'));
-      modal.open;
+    modal.open;
   }
 
   render() {

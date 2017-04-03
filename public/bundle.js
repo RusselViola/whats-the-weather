@@ -25699,7 +25699,8 @@
 	    var _this2 = _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).call(this, props));
 
 	    _this2.state = {
-	      isLoading: false
+	      isLoading: false,
+	      errorMessage: undefined
 	    };
 	    _this2.handleSearch = _this2.handleSearch.bind(_this2);
 	    return _this2;
@@ -25711,8 +25712,7 @@
 	      var _this = this;
 
 	      this.setState({
-	        isLoading: true,
-	        errorMessage: undefined
+	        isLoading: true
 	      });
 
 	      _openWeatherMap2.default.getTemp(location).then(function (temp) {
