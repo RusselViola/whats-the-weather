@@ -48,7 +48,7 @@ export default class Weather extends Component {
     function renderError() {
       if (typeof errorMessage === 'string') {
         return (
-          <ErrorModal />
+          <ErrorModal message={errorMessage}/>
         )
       }
     }
