@@ -55,7 +55,7 @@ export default class Weather extends Component {
 
     return (
       <div>
-        <h1 className="text-center">What's the Weather?</h1>
+        <h1 className="text-center page-title">What's the Weather?</h1>
         <WeatherForm onSearch={this.handleSearch}/>
         {renderMessage()}
         {renderError()}
