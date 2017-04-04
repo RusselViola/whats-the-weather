@@ -27988,7 +27988,7 @@
 
 
 	// module
-	exports.push([module.id, ".page-title {\n  margin-top: 8.5rem;\n  margin-bottom: 8.5rem; }\n\ninput[type=search] {\n  box-shadow: none; }\n", ""]);
+	exports.push([module.id, ".page-title {\n  color: #555;\n  margin-top: 2.5rem;\n  margin-bottom: 2.5rem; }\n\ninput[type=search] {\n  box-shadow: none; }\n", ""]);
 
 	// exports
 
