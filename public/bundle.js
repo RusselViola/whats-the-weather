@@ -25634,7 +25634,7 @@
 	              _react2.default.createElement(
 	                'li',
 	                null,
-	                _react2.default.createElement('input', { type: 'search', placeholder: 'Seach weather' })
+	                _react2.default.createElement('input', { type: 'search', placeholder: 'Seach weather by city' })
 	              ),
 	              _react2.default.createElement(
 	                'li',
@@ -25832,7 +25832,7 @@
 	        _react2.default.createElement(
 	          'form',
 	          { onSubmit: this.onFormSubmit.bind(this) },
-	          _react2.default.createElement('input', { type: 'text', ref: 'location' }),
+	          _react2.default.createElement('input', { type: 'text', ref: 'location', placeholder: 'Search weather by city' }),
 	          _react2.default.createElement(
 	            'button',
 	            { className: 'button expanded hollow' },
@@ -27511,7 +27511,7 @@
 	    null,
 	    _react2.default.createElement(
 	      "h1",
-	      { className: "text-center" },
+	      { className: "text-center page-title" },
 	      "About"
 	    ),
 	    _react2.default.createElement(
@@ -27570,7 +27570,7 @@
 	    null,
 	    _react2.default.createElement(
 	      "h1",
-	      { className: "text-center" },
+	      { className: "text-center page-title" },
 	      "Examples"
 	    ),
 	    _react2.default.createElement(
@@ -27990,7 +27990,7 @@
 
 
 	// module
-	exports.push([module.id, ".page-title {\n  margin-top: 2.5rem;\n  margin-bottom: 2.5rem;\n}\n", ""]);
+	exports.push([module.id, ".page-title {\n  margin-top: 2.5rem;\n  margin-bottom: 2.5rem;\n}\n\ninput[type=search] {\n  box-shadow: none;\n}\n", ""]);
 
 	// exports
 
